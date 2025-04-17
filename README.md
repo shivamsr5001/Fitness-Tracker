@@ -1,4 +1,4 @@
-# First Project — Stride Visual Tracker
+# First Project — Fitness Tracker
 Submitted for the Outlier AI Front-End Web App Challenge
 
 # Welcome to your Lovable project
