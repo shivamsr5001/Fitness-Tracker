@@ -29,7 +29,11 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 interface ManualInputFormProps {
-  onSubmit: (data: FormData) => void;
+  onSubmit: (data: {
+    steps: number;
+    calories: number;
+    activeMinutes: number;
+  }) => void;
   onCancel: () => void;
   currentValues: {
     steps: number;
@@ -50,7 +54,13 @@ export function ManualInputForm({ onSubmit, onCancel, currentValues }: ManualInp
   });
 
   const handleSubmit = (data: FormData) => {
-    onSubmit(data);
+    // Convert string values to numbers before passing to onSubmit
+    onSubmit({
+      steps: Number(data.steps),
+      calories: Number(data.calories),
+      activeMinutes: Number(data.activeMinutes),
+    });
+    
     toast({
       title: "Data updated",
       description: "Your fitness data has been updated successfully.",
